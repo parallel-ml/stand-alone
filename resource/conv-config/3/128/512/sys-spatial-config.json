@@ -7,13 +7,13 @@
       "n4"
     ],
     "merge": 1,
-    "split": 3,
+    "split": 9,
     "op": "",
-    "input_shape": "128 128 512"
+    "input_shape": "44 44 512"
   },
   "n2": {
     "model": [
-      "channel_conv_0"
+      "spatial_conv"
     ],
     "devices": [
       "n5"
@@ -24,7 +24,7 @@
   },
   "n3": {
     "model": [
-      "channel_conv_1"
+      "spatial_conv"
     ],
     "devices": [
       "n5"
@@ -35,7 +35,7 @@
   },
   "n4": {
     "model": [
-      "channel_conv_2"
+      "spatial_conv"
     ],
     "devices": [
       "n5"
@@ -49,7 +49,7 @@
     "devices": [
       "n1"
     ],
-    "merge": 3,
+    "merge": 9,
     "split": 0,
     "op": "cat",
     "sample_output_shape": "55 55 48"
