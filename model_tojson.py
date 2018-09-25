@@ -54,4 +54,4 @@ def create_model(kernal, filter, channel, dir):
 
 
 for k, f, c in itertools.product(KERNAL, FITLER, CHANNEL):
-    create_model(k, f, c, 'conv-config/{}/{}/{}'.format(k, f, c))
+    create_model(k, f, c, 'resource/conv-config/{}/{}/{}'.format(k, f, c))
