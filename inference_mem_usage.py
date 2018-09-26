@@ -22,10 +22,14 @@ input_size, channel, kernal, filter = args.input_size, args.channel, args.kernal
 def main():
 	model = Sequential()
 	#model.add(InputLayer(input_shape=(input_size, input_size, channel)))
-        #C3D conv 2
+	#C3D conv 2
 	#model.add(InputLayer(input_shape=(56, 56, 16, 64)))
         #C3D conv 4
 	#model.add(InputLayer(input_shape=(28, 28, 8, 256)))
+        #VGG conv 2
+	#model.add(InputLayer(input_shape=(220, 220, 64)))
+        #VGG conv 9
+	model.add(InputLayer(input_shape=(27, 27, 512)))
         #Desne Layers
         # NOTHING HERE
 
@@ -34,8 +38,12 @@ def main():
 	#model.add(Conv3D(128, (3, 3, 3), activation='relu', padding='same'))
         #C3D conv 4
 	#model.add(Conv3D(256, (3, 3, 3), activation='relu', padding='same'))
-        #C3D dense 1
-	model.add(Dense(4096, input_shape=(8129,), activation='relu'))
+	#C3D dense 1
+	#model.add(Dense(4096, input_shape=(8129,), activation='relu'))
+	#VGG conv2
+	#model.add(Conv2D(64 ,3))
+	#VGG conv9
+	model.add(Conv2D(512 ,3))
 	
 	#X = np.random.random_sample((input_size, input_size, channel))
         #C3D conv2
@@ -43,7 +51,11 @@ def main():
         #C3D conv4
 	#X = np.random.random_sample((28,28,8,256))
         #C3D dense1
-	X = np.random.random_sample((8129))
+	#X = np.random.random_sample((8129))
+	#VGG conv2
+	X = np.random.random_sample((220, 220, 64))
+	#VGG conv9
+	X = np.random.random_sample((27, 27, 512))
 	
 	model.predict(np.array([X]))
 	
