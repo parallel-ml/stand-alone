@@ -1,3 +1,6 @@
+# while true;  do top | awk '/python/ {print $8}' ; sleep 1; done
+
+
 from keras.layers import Conv3D, Conv2D, InputLayer, Dense
 from keras.models import Sequential
 import argparse
@@ -19,16 +22,28 @@ input_size, channel, kernal, filter = args.input_size, args.channel, args.kernal
 def main():
 	model = Sequential()
 	#model.add(InputLayer(input_shape=(input_size, input_size, channel)))
+        #C3D conv 2
 	#model.add(InputLayer(input_shape=(56, 56, 16, 64)))
-	#model.add(InputLayer(input_shape=(8192)))
+        #C3D conv 4
+	#model.add(InputLayer(input_shape=(28, 28, 8, 256)))
+        #Desne Layers
+        # NOTHING HERE
 
 	#model.add(Conv2D(filter, kernal))
+        #C3D conv 2
 	#model.add(Conv3D(128, (3, 3, 3), activation='relu', padding='same'))
-	model.add(Dense(4096, input_shape=(4096,), activation='relu'))
+        #C3D conv 4
+	#model.add(Conv3D(256, (3, 3, 3), activation='relu', padding='same'))
+        #C3D dense 1
+	model.add(Dense(4096, input_shape=(8129,), activation='relu'))
 	
 	#X = np.random.random_sample((input_size, input_size, channel))
+        #C3D conv2
 	#X = np.random.random_sample((56,56,16,64))
-	X = np.random.random_sample((4096))
+        #C3D conv4
+	#X = np.random.random_sample((28,28,8,256))
+        #C3D dense1
+	X = np.random.random_sample((8129))
 	
 	model.predict(np.array([X]))
 	
