@@ -1,0 +1,13 @@
+Model Layer             Time            MemUsage
+
+c3d_original_2_conv     4.15 s        398MB-157MB 
+c3d_original_4_conv     3.62 s       211MB-152MB
+c3d_dense_1             exceeds        >400MB
+
+vgg_conv2               0.7 s        160MB
+vgg_conv9               0.35         150MB
+vgg_dense_1             exceeds      >400MB
+
+
+
+
