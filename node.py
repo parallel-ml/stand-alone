@@ -173,12 +173,12 @@ class Node:
         datatype = np.uint8 if req['type'] == 8 else np.float32
 
         shape = tuple([int(entry) for entry in req['shape'].split(' ')])
+        X = np.fromstring(bytestr, datatype).reshape(shape)
         if self.input_shape is None or shape == self.input_shape:
-            X = np.fromstring(bytestr, datatype).reshape(shape)
             self.input.enqueue(X)
-            self.prepare_data += time.time() - start
         else:
             Thread(target=self.generate).start()
+        self.prepare_data += time.time() - start
 
     def generate(self):
         self.input.enqueue(np.random.random_sample(self.input_shape))
