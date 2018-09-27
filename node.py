@@ -175,14 +175,16 @@ class Node:
         shape = tuple([int(entry) for entry in req['shape'].split(' ')])
         if self.input_shape is None or shape == self.input_shape:
             X = np.fromstring(bytestr, datatype).reshape(shape)
+            self.input.enqueue(X)
+            self.prepare_data += time.time() - start
         else:
-            X = np.random.random_sample(self.input_shape)
+            Thread(target=self.generate).start()
 
-        self.input.enqueue(X)
-        self.prepare_data += time.time() - start
+    def generate(self):
+        self.input.enqueue(np.random.random_sample(self.input_shape))
 
     def send(self, X):
-        ip = self.ip.get()
+        ip = self.ip.get(np.random.random_sample(self.input_shape))
 
         client = ipc.HTTPTransceiver(ip, 12345)
         requestor = ipc.Requestor(PROTOCOL, client)
