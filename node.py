@@ -184,7 +184,7 @@ class Node:
         self.input.enqueue(np.random.random_sample(self.input_shape))
 
     def send(self, X):
-        ip = self.ip.get(np.random.random_sample(self.input_shape))
+        ip = self.ip.get()
 
         client = ipc.HTTPTransceiver(ip, 12345)
         requestor = ipc.Requestor(PROTOCOL, client)
