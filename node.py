@@ -172,13 +172,12 @@ class Node:
         bytestr = req['input']
         datatype = np.uint8 if req['type'] == 8 else np.float32
 
-        # adapt to merge layer
-        if not self.input_shape:
-            shape = tuple([int(entry) for entry in req['shape'].split(' ')])
+        shape = tuple([int(entry) for entry in req['shape'].split(' ')])
+        if self.input_shape is not None or shape != self.input_shape:
+            X = np.random.random_sample(self.input_shape)
         else:
-            shape = self.input_shape
+            X = np.fromstring(bytestr, datatype).reshape(shape)
 
-        X = np.fromstring(bytestr, datatype).reshape(shape)
         self.input.enqueue(X)
         self.prepare_data += time.time() - start
 

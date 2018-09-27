@@ -9,7 +9,7 @@
     "merge": 1,
     "split": 9,
     "op": "",
-    "input_shape": "48 48 512"
+    "input_shape": "44 44 512"
   },
   "n2": {
     "model": [

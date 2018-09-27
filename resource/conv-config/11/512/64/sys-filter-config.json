@@ -9,11 +9,11 @@
     "merge": 1,
     "split": 3,
     "op": "",
-    "input_shape": "128 128 64"
+    "input_shape": "128 128 21"
   },
   "n2": {
     "model": [
-      "channel_conv_0"
+      "filter_conv_0"
     ],
     "devices": [
       "n5"
@@ -24,7 +24,7 @@
   },
   "n3": {
     "model": [
-      "channel_conv_1"
+      "filter_conv_1"
     ],
     "devices": [
       "n5"
@@ -35,7 +35,7 @@
   },
   "n4": {
     "model": [
-      "channel_conv_2"
+      "filter_conv_2"
     ],
     "devices": [
       "n5"
